@@ -18,6 +18,8 @@ You can install the development version of pruin from
 devtools::install_github("haydo1117/pruin")
 ```
 
+R version 4.1+ is required.
+
 ## Example
 
 ### Computation of finite ruin probability for Poisson-Exponential process

@@ -1,10 +1,10 @@
 Package: pruin
-Title: What the Package Does (One Line, Title Case)
+Title: Compute ruin probability via Inverse Laplace Transform using Gaver-Stehfest algorithm.
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Hayden", "Lau", , "kawai.lau90@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
+Description: Compute ruin probability via Inverse Laplace Transform using Gaver-Stehfest algorithm.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -14,3 +14,5 @@ Suggests:
 Config/testthat/edition: 3
 Imports: 
     purrr
+Depends:
+    R (>= 4.1.0)
