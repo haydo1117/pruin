@@ -38,6 +38,8 @@ Lprob_ut <- function(delta,c,lambda,beta,u){
 #' All arguments must be of length 1. For vectorized arguments, either use a loop or \code{apply} family, or \code{purrr}
 #' package.
 #'
+#' Net profit condition is assumed, i.e. \code{c-\lambda/beta > 0}.
+#'
 #' @param u Numerical. Initial surplus.
 #' @param t Numerical. Terminal time.
 #' @param c Numerical. Premium rate.
@@ -54,7 +56,7 @@ Lprob_ut <- function(delta,c,lambda,beta,u){
 #'
 #' c <- 1
 #' lambda <- 1
-#' beta <- 1
+#' beta <- 1.2
 #'
 #' ruin_prob_exp(1,1,c,lambda,beta)
 #'
@@ -75,6 +77,7 @@ ruin_prob_exp <- function(u,t,c,lambda,beta,...){
     stopifnot(u>=0)
     stopifnot(t>=0)
     if(t==0){return(1)}
+    stopifnot((c-lambda/beta) > 0)
     ##
     fn_gs(Lprob_ut,x=t,c=c,lambda=lambda,beta=beta,u=u,...)
 }

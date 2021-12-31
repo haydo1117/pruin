@@ -32,6 +32,8 @@ values for different \code{n} would be printed along with a plot which assists i
 \details{
 All arguments must be of length 1. For vectorized arguments, either use a loop or \code{apply} family, or \code{purrr}
 package.
+
+Net profit condition is assumed, i.e. \code{c-\lambda/beta > 0}.
 }
 \examples{
 
@@ -39,7 +41,7 @@ library(pruin)
 
 c <- 1
 lambda <- 1
-beta <- 1
+beta <- 1.2
 
 ruin_prob_exp(1,1,c,lambda,beta)
 
