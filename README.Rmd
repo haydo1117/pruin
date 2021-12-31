@@ -18,7 +18,7 @@ knitr::opts_chunk$set(
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of pruin is to ...
+The goal of pruin is to compute ruin probability.
 
 ## Installation
 
@@ -31,25 +31,37 @@ devtools::install_github("haydo1117/pruin")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+### Computation of finite ruin probability for Poisson-Exponential process
+
+Run `?ruin_prob_exp` for details. `n` is the number of terms used in the Gaver-Stehfest algorithm. 
+Large `n` results in divergence due to numerical precision issue. Small `n` does not converge. 
 
 ```{r example}
-##library(pruin)
-## basic example code
+library(pruin)
+
+c <- 1
+lambda <- 1
+beta <- 1
+
+ruin_prob_exp(u=1,t=1,c,lambda,beta)
+
+## once `n` is chosen, switch off `try_n`
+ruin_prob_exp(u=1,t=1,c,lambda,beta,n=7,try_n=FALSE)
+
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+### Computation of Inverse Laplace Transform in general
 
-```{r cars}
-summary(cars)
+Run `?fn_gs` for details. 
+
+```{r}
+library(pruin)
+
+## laplace transform of constant function k
+Fconst <- function(x,k)k/x
+
+fn_gs(Fconst,2,n=15,k=2,plot=FALSE)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
 
-You can also embed plots, for example:
 
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

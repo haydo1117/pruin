@@ -6,7 +6,7 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of pruin is to …
+The goal of pruin is to compute ruin probability.
 
 ## Installation
 
@@ -20,36 +20,48 @@ devtools::install_github("haydo1117/pruin")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+### Computation of finite ruin probability for Poisson-Exponential process
+
+Run `?ruin_prob_exp` for details. `n` is the number of terms used in the
+Gaver-Stehfest algorithm. Large `n` results in divergence due to
+numerical precision issue. Small `n` does not converge.
 
 ``` r
-##library(pruin)
-## basic example code
+library(pruin)
+
+c <- 1
+lambda <- 1
+beta <- 1
+
+ruin_prob_exp(u=1,t=1,c,lambda,beta)
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`?
-You can include R chunks like so:
+<img src="man/figures/README-example-1.png" width="100%" />
+
+    #>       n=1       n=2       n=3       n=4       n=5       n=6       n=7       n=8 
+    #> 0.3438019 0.2572464 0.2469878 0.2460180 0.2459412 0.2459372 0.2459376 0.2459378 
+    #>       n=9      n=10 
+    #> 0.2459370 0.2459456
+
+    ## once `n` is chosen, switch off `try_n`
+    ruin_prob_exp(u=1,t=1,c,lambda,beta,n=7,try_n=FALSE)
+    #> [1] 0.2459376
+
+### Computation of Inverse Laplace Transform in general
+
+Run `?fn_gs` for details.
 
 ``` r
-summary(cars)
-#>      speed           dist       
-#>  Min.   : 4.0   Min.   :  2.00  
-#>  1st Qu.:12.0   1st Qu.: 26.00  
-#>  Median :15.0   Median : 36.00  
-#>  Mean   :15.4   Mean   : 42.98  
-#>  3rd Qu.:19.0   3rd Qu.: 56.00  
-#>  Max.   :25.0   Max.   :120.00
+library(pruin)
+
+## laplace transform of constant function k
+Fconst <- function(x,k)k/x
+
+fn_gs(Fconst,2,n=15,k=2,plot=FALSE)
+#>        n=1        n=2        n=3        n=4        n=5        n=6        n=7 
+#>   2.000000   2.000000   2.000000   2.000000   2.000000   2.000000   2.000000 
+#>        n=8        n=9       n=10       n=11       n=12       n=13       n=14 
+#>   2.000000   1.999999   2.000049   2.000179   2.047860   1.981037   3.410230 
+#>       n=15 
+#> 201.889947
 ```
-
-You’ll still need to render `README.Rmd` regularly, to keep `README.md`
-up-to-date. `devtools::build_readme()` is handy for this. You could also
-use GitHub Actions to re-render `README.Rmd` every time you push. An
-example workflow can be found here:
-<https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-<img src="man/figures/README-pressure-1.png" width="100%" />
-
-In that case, don’t forget to commit and push the resulting figure
-files, so they display on GitHub and CRAN.
