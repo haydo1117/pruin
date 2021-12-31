@@ -47,7 +47,7 @@ fn_gs <- function(Fn,x,n=10,try_n=TRUE,plot=TRUE,...){
     names(temp) <- sprintf("n=%s",1:n)
     ##
     if(plot){
-        plot(1:n,temp,ylab="function value",xlab="values of `n`")
+        plot(1:n,temp,ylab="function value",xlab="value of `n`")
     }
     ##
     temp
