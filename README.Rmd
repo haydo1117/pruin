@@ -44,7 +44,7 @@ library(pruin)
 
 c <- 1
 lambda <- 1
-beta <- 1
+beta <- 1.2
 
 ruin_prob_exp(u=1,t=1,c,lambda,beta)
 

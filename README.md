@@ -33,7 +33,7 @@ library(pruin)
 
 c <- 1
 lambda <- 1
-beta <- 1
+beta <- 1.2
 
 ruin_prob_exp(u=1,t=1,c,lambda,beta)
 ```
@@ -41,13 +41,13 @@ ruin_prob_exp(u=1,t=1,c,lambda,beta)
 <img src="man/figures/README-example-1.png" width="100%" />
 
     #>       n=1       n=2       n=3       n=4       n=5       n=6       n=7       n=8 
-    #> 0.3438019 0.2572464 0.2469878 0.2460180 0.2459412 0.2459372 0.2459376 0.2459378 
+    #> 0.2798736 0.2103478 0.2018893 0.2010840 0.2010203 0.2010170 0.2010173 0.2010174 
     #>       n=9      n=10 
-    #> 0.2459370 0.2459456
+    #> 0.2010184 0.2009927
 
     ## once `n` is chosen, switch off `try_n`
     ruin_prob_exp(u=1,t=1,c,lambda,beta,n=7,try_n=FALSE)
-    #> [1] 0.2459376
+    #> [1] 0.2010173
 
 ### Computation of Inverse Laplace Transform in general
 
