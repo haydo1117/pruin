@@ -134,7 +134,7 @@ Det <- function(c,lambda,family,M,check=FALSE,include_error=FALSE){
     res <- as.numeric(solve(i-q3,solve(q1,v)))
     err <- 1/(1+theta)+sum(res)
     if(check){
-        cat(sprintf("Approximation error for phi(0,t=inf) is %s \n",err))
+        cat(sprintf("Approximation error for psi(0,t=Inf) is %s \n",err))
     }
     if(include_error){
         return(list(res=res,err=err))

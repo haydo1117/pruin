@@ -8,6 +8,8 @@
 #' a separate run of \code{ruin_prob_ls}, or decision for a value for the ruin probability
 #' (if the top values are close to each other).
 #'
+#' It can take some time depending on the value of \code{n} and the \code{family} used.
+#'
 #' @param n Numerical of length 1, valued at least 2. Default to be 100. Ignore if \code{.cand} is used.
 #' @param .cand Numerical vector of length at least 2. Candidates for \code{u_scale} in \code{ruin_prob_ls}.
 #' Automatically generated using \code{n} if not provided.

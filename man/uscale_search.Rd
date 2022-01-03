@@ -27,6 +27,8 @@ This function tries different values of \code{u_scale} and attach the correspond
 error of \code{ruin_prob_ls(u=0,t=Inf)}. A table is then return to assist to either chosing \code{u_scale} for
 a separate run of \code{ruin_prob_ls}, or decision for a value for the ruin probability
 (if the top values are close to each other).
+
+It can take some time depending on the value of \code{n} and the \code{family} used.
 }
 \examples{
 

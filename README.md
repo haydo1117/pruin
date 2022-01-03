@@ -49,7 +49,7 @@ series”. Run `?FUNCTION_NAME` for details of specific function.
 
 Since `uscale_search` takes time, it is mostly commented out for this
 document. The specific chosen values of `u_scale` were determined using
-`uscale_search`. Uncomment the lines for full results.
+`uscale_search`. Uncomment those lines for full results.
 
 ### Exponential distribution
 
@@ -88,7 +88,7 @@ head(exp_search)
 
 ruin_prob_ls(u=10,t=2,c,lambda,family=exponential()(beta=1),check=TRUE,u_scale = 0.6) # once u_scale is chosen
 #> Maximum magnitude of eigen value of Q3 is 0.988350078157619 
-#> Approximation error for phi(0,t=inf) is -1.80084723744312e-06
+#> Approximation error for psi(0,t=Inf) is -1.80084723744312e-06
 #> [1] 0.001349969
 ```
 
@@ -99,14 +99,14 @@ ce1 <- comb_exponential()(w=c(2,-1),beta=c(1.5,3))
 # uscale_search(u=10,t=2,c=1.1,lambda=1,family=ce1)
 ruin_prob_ls(u=10,t=2,c=1.1,lambda=1,family=ce1,check=TRUE,u_scale = 1.0715193)
 #> Maximum magnitude of eigen value of Q3 is 0.982386542356505 
-#> Approximation error for phi(0,t=inf) is -0.000106902542151399
+#> Approximation error for psi(0,t=Inf) is -0.000106902542151399
 #> [1] 0.0002601599
 
 ce2 <- comb_exponential()(w=c(1/3,2/3),beta=c(0.5,2))
 # uscale_search(u=10,t=2,c=1.1,lambda=1,family=ce2)
 ruin_prob_ls(u=10,t=2,c=1.1,lambda=1,family=ce2,check=TRUE,u_scale = 0.6250552)
 #> Maximum magnitude of eigen value of Q3 is 0.990030619800819 
-#> Approximation error for phi(0,t=inf) is 4.08372353940534e-05
+#> Approximation error for psi(0,t=Inf) is 4.08372353940534e-05
 #> [1] 0.008668747
 ```
 
@@ -117,14 +117,14 @@ w1 <- weibull()(alpha=2,beta=1/gamma(1+1/2))
 # uscale_search(u=8,t=8,c=1.1,lambda=1,family=w1)
 ruin_prob_ls(u=8,t=8,c=1.1,lambda=1,family=w1,check=TRUE,u_scale = 1.6982437)
 #> Maximum magnitude of eigen value of Q3 is 0.974085350119468 
-#> Approximation error for phi(0,t=inf) is -0.000250509636899876
+#> Approximation error for psi(0,t=Inf) is -0.000250509636899876
 #> [1] 0.01551734
 
 w2 <- weibull()(alpha=3,beta=1/gamma(1+1/3))
 # uscale_search(u=4,t=4,c=1.1,lambda=1,family=w2)
 ruin_prob_ls(u=4,t=4,c=1.1,lambda=1,family=w2,check=TRUE,u_scale = 3.0199517)
 #> Maximum magnitude of eigen value of Q3 is 0.953023270944534 
-#> Approximation error for phi(0,t=inf) is 0.00619105609471005
+#> Approximation error for psi(0,t=Inf) is 0.00619105609471005
 #> [1] 0.05679952
 ```
 
@@ -135,7 +135,7 @@ g1 <- gig()(a=5.03251,b=0.01987,alpha=2.5)
 # uscale_search(u=4,t=4,c=1.1,lambda=1,family=g1)
 ruin_prob_ls(u=4,t=4,c=1.1,lambda=1,family=g1,check=TRUE,u_scale = 2.6302680)
 #> Maximum magnitude of eigen value of Q3 is 0.957806304142554 
-#> Approximation error for phi(0,t=inf) is 0.00712739149898844
+#> Approximation error for psi(0,t=Inf) is 0.00712739149898844
 #> [1] 0.08464718
 
 g2 <- gig()(a=0.32497,b=0.61543,alpha=-0.75)
@@ -157,7 +157,7 @@ tn1 <- truncated_normal()(mu=0,sigma=sqrt(pi/2))
 # uscale_search(u=8,t=6,c=1.1,lambda=1,family=tn1)
 ruin_prob_ls(u=8,t=6,c=1.1,lambda=1,family=tn1,check=TRUE,u_scale = 1.1481536)
 #> Maximum magnitude of eigen value of Q3 is 0.9816450385389 
-#> Approximation error for phi(0,t=inf) is 5.02053729289909e-05
+#> Approximation error for psi(0,t=Inf) is 5.02053729289909e-05
 #> [1] 0.01652747
 
 tn_par <- 1/(1+dnorm(1)/(1-pnorm(-1)))
@@ -165,7 +165,7 @@ tn2 <- truncated_normal()(mu=tn_par,sigma=tn_par)
 # uscale_search(u=6,t=4,c=1.1,lambda=1,family=tn2)
 ruin_prob_ls(u=6,t=4,c=1.1,lambda=1,family=tn2,check=TRUE,u_scale = 1.4791084)
 #> Maximum magnitude of eigen value of Q3 is 0.977158844750742 
-#> Approximation error for phi(0,t=inf) is -0.000440636302659336
+#> Approximation error for psi(0,t=Inf) is -0.000440636302659336
 #> [1] 0.01979806
 ```
 

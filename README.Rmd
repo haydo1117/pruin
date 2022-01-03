@@ -62,7 +62,7 @@ Run `?FUNCTION_NAME` for details of specific function.
 
 Since `uscale_search` takes time, it is mostly commented out for this document. 
 The specific chosen values of `u_scale` were determined using `uscale_search`.
-Uncomment the lines for full results.
+Uncomment those lines for full results.
 
 ### Exponential distribution
 
