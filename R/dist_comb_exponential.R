@@ -1,4 +1,42 @@
 
+#' Create a function to generate combination of exponential family
+#'
+#'
+#' A function to create "family" objects is returned. The "family" object is to be used in the \code{family}
+#' argument in \code{\link{ruin_prob_ls}}. It contains all essential information to calculate the
+#' ruin probability, e.g. calculation of \eqn{\Theta_{f,k}} for various functions \eqn{f}.
+#'
+#' Appendix A3 in article "Finite-time ruin probabilities using bivariate Laguerre series" is used.
+#' The sum to infinity terms in (A18), (A19) are truncated at \code{M2} and \code{M3} (\code{M2>M3}).
+#'
+#' Ideally, large \code{M2} and \code{M3} should be used. However, due to limit in numerical precision in R
+#' (long double in C, i.e. 64bit) calculation of \eqn{\Theta_{f,k}} for large \eqn{k} is unstable. As a result,
+#' \code{M2} and \code{M3} has to be moderate.
+#'
+#' Computer programs with high precision arithmetic built-in (e.g. Mathematica or Matlab) should be used for
+#' reliable results.
+#'
+#' @param M2 Numerical of length 1.
+#' @param M3 Numerical of length 1.
+#'
+#' @return A function to create a family object with parameters:
+#' \itemize{
+#'   \item \code{w}: Numerical vector sum to 1 describing the weights for different exponentials. Negative weights can be used.
+#'   \item \code{beta}: Numerical vector. Rate of the individual exponentials.
+#' }
+#' @export
+#'
+#' @examples
+#'
+#' library(pruin)
+#'
+#' w <- c(2,-1)
+#' beta <- c(1,2)
+#'
+#' family <- comb_exponential()(w=w,beta=beta) # a list object
+#'
+#' family[c("name","par","mean")] # extract some information
+#'
 comb_exponential <- function(M2=45,M3=32) {
     ##
     validate_M(M2,1)

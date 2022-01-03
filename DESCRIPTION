@@ -1,10 +1,15 @@
 Package: pruin
-Title: Compute ruin probability via Inverse Laplace Transform using Gaver-Stehfest algorithm.
+Title: Compute finite-time ruin probability via bivariate Laguerre series
 Version: 0.0.0.9000
 Authors@R: 
     person("Hayden", "Lau", , "kawai.lau90@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: Compute ruin probability via Inverse Laplace Transform using Gaver-Stehfest algorithm.
+Description: Compute finite-time ruin probability via bivariate Laguerre series, see 
+    "Finite-time ruin probabilities using bivariate Laguerre series". 
+    Currently support (1) combination of exponentials, 
+    (2) exponential, (3) generalised inverse Gaussian, (4) Normal truncated above zero, and (5) Weibull.
+    For exponential distribution, Inverse Laplace Transform using Gaver-Stehfest algorithm is also included. As a by-product,
+    a function to perform Inverse Laplace Transform is also included.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -17,6 +22,7 @@ Imports:
     mpoly,
     rlang,
     purrr,
-    dplyr
+    dplyr,
+    stats
 Depends:
     R (>= 4.1.0)
