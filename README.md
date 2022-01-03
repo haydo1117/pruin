@@ -68,7 +68,7 @@ ruin_prob_exp_gs(u=10,t=2,c,lambda,beta=1,plot=FALSE) # `plot=TRUE` for a visual
 #>          n=7          n=8          n=9         n=10 
 #> 1.349981e-03 1.349987e-03 1.349988e-03 1.349991e-03
 
-## once `n` is chosen, switch off `try_n`
+# once `n` is chosen, switch off `try_n`
 ruin_prob_exp_gs(u=10,t=2,c,lambda,beta=1,n=7,try_n=FALSE)
 #> [1] 0.001349981
 ```
@@ -76,7 +76,7 @@ ruin_prob_exp_gs(u=10,t=2,c,lambda,beta=1,n=7,try_n=FALSE)
 #### Bivariate Laguerre
 
 ``` r
-exp_search <- uscale_search(u=10,t=2,c=c,lambda=lambda,family=exponential()(beta=1)) #search for u_scale
+exp_search <- uscale_search(u=10,t=2,c=c,lambda=lambda,family=exponential()(beta=1)) # search for u_scale
 head(exp_search)
 #>     u_scale         res           err
 #> 1 0.5179475 0.001350093 -4.282286e-07
@@ -172,7 +172,7 @@ ruin_prob_ls(u=6,t=4,c=1.1,lambda=1,family=tn2,check=TRUE,u_scale = 1.4791084)
 ### Computation of Inverse Laplace Transform in general
 
 ``` r
-## laplace transform of constant function k
+# laplace transform of constant function k
 Fconst <- function(x,k)k/x
 fn_gs(Fconst,2,n=15,k=2,plot=FALSE)
 #>        n=1        n=2        n=3        n=4        n=5        n=6        n=7 

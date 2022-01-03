@@ -75,14 +75,14 @@ Large `n` results in divergence due to numerical precision issue. Small `n` does
 ```{r out.width="50%"}
 ruin_prob_exp_gs(u=10,t=2,c,lambda,beta=1,plot=FALSE) # `plot=TRUE` for a visualisation
 
-## once `n` is chosen, switch off `try_n`
+# once `n` is chosen, switch off `try_n`
 ruin_prob_exp_gs(u=10,t=2,c,lambda,beta=1,n=7,try_n=FALSE)
 ```
 
 #### Bivariate Laguerre
 
 ```{r}
-exp_search <- uscale_search(u=10,t=2,c=c,lambda=lambda,family=exponential()(beta=1)) #search for u_scale
+exp_search <- uscale_search(u=10,t=2,c=c,lambda=lambda,family=exponential()(beta=1)) # search for u_scale
 head(exp_search)
 
 ruin_prob_ls(u=10,t=2,c,lambda,family=exponential()(beta=1),check=TRUE,u_scale = 0.6) # once u_scale is chosen
@@ -141,7 +141,7 @@ ruin_prob_ls(u=6,t=4,c=1.1,lambda=1,family=tn2,check=TRUE,u_scale = 1.4791084)
 ### Computation of Inverse Laplace Transform in general
 
 ```{r}
-## laplace transform of constant function k
+# laplace transform of constant function k
 Fconst <- function(x,k)k/x
 fn_gs(Fconst,2,n=15,k=2,plot=FALSE)
 ```
