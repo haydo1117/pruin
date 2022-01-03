@@ -1,5 +1,7 @@
 ---
-output: github_document
+output: 
+    github_document:
+        pandoc_args: --webtex
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -146,5 +148,19 @@ Fconst <- function(x,k)k/x
 fn_gs(Fconst,2,n=15,k=2,plot=FALSE)
 ```
 
+## Remark
 
+For Weibull and truncated Normal (say $X$ with density $f_X$), the raw moments can be determined analytically in terms of gamma 
+function (`gamma()` in R) for Weibull and Normal cumulative density function (`pnorm()` in R) for truncated Normal. 
 
+Denote $L_k$ the Laguerre polynomial or order $k$, 
+the calculation of 
+$\Theta_{f_X,k} = \mathbb{E}[L_k(X)e^{-\frac{X}{2}}]$
+is then computed through Taylor expansion of $x\mapsto e^x$ truncated at 40 terms, i.e.
+$$
+\Theta_{f_X,k} = 
+\mathbb{E}[L_k(X)e^{-\frac{X}{2}}]
+    \approx \mathbb{E}[\sum_{j=0}^k l_j X^j \sum_{n=0}^{40} \frac{(-X/2)^n}{n!} ]
+    = \sum_{j=0}^k l_j \sum_{n=0}^{40} \frac{(-1)^n}{2^nn!}\mathbb{E}[X^{n+j}].
+$$
+The approximation is justified by dominated convergence. 

@@ -53,7 +53,9 @@ document. The specific chosen values of `u_scale` were determined using
 
 ### Exponential distribution
 
-Rate *β* = 1 is used.
+Rate
+![\\beta=1](https://latex.codecogs.com/png.latex?%5Cbeta%3D1 "\beta=1")
+is used.
 
 #### Inverse Laplace
 
@@ -182,3 +184,34 @@ fn_gs(Fconst,2,n=15,k=2,plot=FALSE)
 #>       n=15 
 #> 201.889947
 ```
+
+## Remark
+
+For Weibull and truncated Normal (say
+![X](https://latex.codecogs.com/png.latex?X "X") with density
+![f\_X](https://latex.codecogs.com/png.latex?f_X "f_X")), the raw
+moments can be determined analytically in terms of gamma function
+(`gamma()` in R) for Weibull and Normal cumulative density function
+(`pnorm()` in R) for truncated Normal.
+
+Denote ![L\_k](https://latex.codecogs.com/png.latex?L_k "L_k") the
+Laguerre polynomial or order
+![k](https://latex.codecogs.com/png.latex?k "k"), the calculation of
+![\\Theta\_{f\_X,k} = \\mathbb{E}\[L\_k(X)e^{-\\frac{X}{2}}\]](https://latex.codecogs.com/png.latex?%5CTheta_%7Bf_X%2Ck%7D%20%3D%20%5Cmathbb%7BE%7D%5BL_k%28X%29e%5E%7B-%5Cfrac%7BX%7D%7B2%7D%7D%5D "\Theta_{f_X,k} = \mathbb{E}[L_k(X)e^{-\frac{X}{2}}]")
+is then computed through Taylor expansion of
+![x\\mapsto e^x](https://latex.codecogs.com/png.latex?x%5Cmapsto%20e%5Ex "x\mapsto e^x")
+truncated at 40 terms, i.e.
+
+![
+\\Theta\_{f\_X,k} = 
+\\mathbb{E}\[L\_k(X)e^{-\\frac{X}{2}}\]
+    \\approx \\mathbb{E}\[\\sum\_{j=0}^k l\_j X^j \\sum\_{n=0}^{40} \\frac{(-X/2)^n}{n!} \]
+    = \\sum\_{j=0}^k l\_j \\sum\_{n=0}^{40} \\frac{(-1)^n}{2^nn!}\\mathbb{E}\[X^{n+j}\].
+](https://latex.codecogs.com/png.latex?%0A%5CTheta_%7Bf_X%2Ck%7D%20%3D%20%0A%5Cmathbb%7BE%7D%5BL_k%28X%29e%5E%7B-%5Cfrac%7BX%7D%7B2%7D%7D%5D%0A%20%20%20%20%5Capprox%20%5Cmathbb%7BE%7D%5B%5Csum_%7Bj%3D0%7D%5Ek%20l_j%20X%5Ej%20%5Csum_%7Bn%3D0%7D%5E%7B40%7D%20%5Cfrac%7B%28-X%2F2%29%5En%7D%7Bn%21%7D%20%5D%0A%20%20%20%20%3D%20%5Csum_%7Bj%3D0%7D%5Ek%20l_j%20%5Csum_%7Bn%3D0%7D%5E%7B40%7D%20%5Cfrac%7B%28-1%29%5En%7D%7B2%5Enn%21%7D%5Cmathbb%7BE%7D%5BX%5E%7Bn%2Bj%7D%5D.%0A "
+\Theta_{f_X,k} = 
+\mathbb{E}[L_k(X)e^{-\frac{X}{2}}]
+    \approx \mathbb{E}[\sum_{j=0}^k l_j X^j \sum_{n=0}^{40} \frac{(-X/2)^n}{n!} ]
+    = \sum_{j=0}^k l_j \sum_{n=0}^{40} \frac{(-1)^n}{2^nn!}\mathbb{E}[X^{n+j}].
+")
+
+The approximation is justified by dominated convergence.
