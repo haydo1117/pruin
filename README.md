@@ -15,6 +15,15 @@ distribution, Inverse Laplace Transform using Gaver-Stehfest algorithm
 is also included. As a by-product, a function to perform Inverse Laplace
 Transform is also included.
 
+Note the bivariate Laguerre series method generally only works when the
+probability to be calculated is of reasonable size, i.e. cannot be too
+small. This is due to the precision limitations in R (where floating
+point numbers are of size 64), while huge precision is required for the
+method. While a change of scale may help, result is only credible when
+the top output from `uscale_search` are consistent with negligible
+error. For a serious calculation, computer programs with high precision
+arithmetic should be used.
+
 ## Installation
 
 You can install the development version of pruin from
@@ -195,7 +204,7 @@ moments can be determined analytically in terms of gamma function
 (`pnorm()` in R) for truncated Normal.
 
 Denote
-![x\\mapsto L\_k(x)=\\sum\_{j=0}^k l\_j x^k](https://latex.codecogs.com/png.latex?x%5Cmapsto%20L_k%28x%29%3D%5Csum_%7Bj%3D0%7D%5Ek%20l_j%20x%5Ek "x\mapsto L_k(x)=\sum_{j=0}^k l_j x^k")
+![x\\mapsto L\_k(x)=\\sum\_{j=0}^k l\_j x^j](https://latex.codecogs.com/png.latex?x%5Cmapsto%20L_k%28x%29%3D%5Csum_%7Bj%3D0%7D%5Ek%20l_j%20x%5Ej "x\mapsto L_k(x)=\sum_{j=0}^k l_j x^j")
 the Laguerre polynomial or order
 ![k](https://latex.codecogs.com/png.latex?k "k"), the calculation of
 ![\\Theta\_{f\_X,k} = \\mathbb{E}\[L\_k(X)e^{-\\frac{X}{2}}\]](https://latex.codecogs.com/png.latex?%5CTheta_%7Bf_X%2Ck%7D%20%3D%20%5Cmathbb%7BE%7D%5BL_k%28X%29e%5E%7B-%5Cfrac%7BX%7D%7B2%7D%7D%5D "\Theta_{f_X,k} = \mathbb{E}[L_k(X)e^{-\frac{X}{2}}]")
@@ -215,4 +224,4 @@ truncated at 40 terms, i.e.
     = \sum_{j=0}^k l_j \sum_{n=0}^{40} \frac{(-1)^n}{2^nn!}\mathbb{E}[X^{n+j}].
 ")
 
-The approximation is justified by dominated convergence (proof?).
+The approximation is justified by dominated convergence.

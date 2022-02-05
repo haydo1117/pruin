@@ -28,8 +28,13 @@ The goal of pruin is to compute finite-time ruin probability via bivariate Lague
 (4) Normal truncated above zero, and 
 (5) Weibull.
 For exponential distribution, Inverse Laplace Transform using Gaver-Stehfest algorithm is also included. 
-As a by-product,
-a function to perform Inverse Laplace Transform is also included.
+As a by-product, a function to perform Inverse Laplace Transform is also included.
+
+Note the bivariate Laguerre series method generally only works when the probability to be calculated is of 
+reasonable size, i.e. cannot be too small. This is due to the precision limitations in R 
+(where floating point numbers are of size 64), while huge precision is required for the method. While a 
+change of scale may help, result is only credible when the top output from `uscale_search` are consistent with 
+negligible error. For a serious calculation, computer programs with high precision arithmetic should be used.
 
 ## Installation
 
@@ -153,7 +158,7 @@ fn_gs(Fconst,2,n=15,k=2,plot=FALSE)
 For Weibull and truncated Normal (say $X$ with density $f_X$), the raw moments can be determined analytically in terms of gamma 
 function (`gamma()` in R) for Weibull and Normal cumulative density function (`pnorm()` in R) for truncated Normal. 
 
-Denote $x\mapsto L_k(x)=\sum_{j=0}^k l_j x^k$ the Laguerre polynomial or order $k$, 
+Denote $x\mapsto L_k(x)=\sum_{j=0}^k l_j x^j$ the Laguerre polynomial or order $k$, 
 the calculation of 
 $\Theta_{f_X,k} = \mathbb{E}[L_k(X)e^{-\frac{X}{2}}]$
 is then computed through Taylor expansion of $x\mapsto e^x$ truncated at 40 terms, i.e.
@@ -163,4 +168,4 @@ $$
     \approx \mathbb{E}[\sum_{j=0}^k l_j X^j \sum_{n=0}^{40} \frac{(-X/2)^n}{n!} ]
     = \sum_{j=0}^k l_j \sum_{n=0}^{40} \frac{(-1)^n}{2^nn!}\mathbb{E}[X^{n+j}].
 $$
-The approximation is justified by dominated convergence (proof?). 
+The approximation is justified by dominated convergence. 
