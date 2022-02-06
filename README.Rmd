@@ -35,6 +35,8 @@ reasonable size, i.e. cannot be too small. This is due to the precision limitati
 (where floating point numbers are of size 64), while huge precision is required for the method. While a 
 change of scale may help, result is only credible when the top output from `uscale_search` are consistent with 
 negligible error. For a serious calculation, computer programs with high precision arithmetic should be used.
+For example, current implemetation does not seem to work well for
+generalised inverse Gaussian with negative alpha parameter.
 
 ## Installation
 
